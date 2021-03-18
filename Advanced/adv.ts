@@ -7,35 +7,31 @@ Define 2 other Child classes and name them Motorbikes and Trucks
 Based on the personal vehicle performance model, kilometers left, number of seats, fuel type and year of production calculate the price once the user clicks on the button "show price" *use your dummy custom formula)
 
 */
-
+var array: Array<Vehicles> = [];
 class Vehicles {
     brand:"";
     color:"";
     carType:"";
     productionYear:number;
+    img:"";
 
-    constructor(a, b, c, d) {
+    constructor(a, b, c, d, e) {
         this.brand = a;
         this.color = b;
         this.carType = c;
         this.productionYear = d;
-        // this.price = d;
-        // this.power = e;
-        // this.technology = f;
-        // model = "";
-        // fuel_type = "";
-        // registration_year = "";
+        this.img = e;
+        array.push(this);
+        console.table(array);
+
         console.log(this);
-        
-        // <p>${this.price}</p>
-        // <p>${this.power}</p>
-        // <p>${this.technology}</p>
     }
     ShowMessage() {
         return `                brand: ${this.brand}
                 color: ${this.color}
                 type: ${this.carType}
                 production year: ${this.productionYear}
+                <img src="${this.img}">
                 `
     }
     }
@@ -45,13 +41,13 @@ class Vehicles {
      technology: "";
      power: "";
 
-     constructor(a, b, c, d, price, technology, power) {
-         super(a, b, c, d);
+     constructor(a, b, c, d, e, price, technology, power) {
+         super(a, b, c, d, e);
          this.price = price;
          this.technology = technology;
          this.power = power;
      }
-     ShowMessageagain() {
+     ShowMessage() {
          return `${super.ShowMessage()}
                  price: ${this.price}
                  technology: ${this.technology}
@@ -60,21 +56,21 @@ class Vehicles {
      }
  }
 
- let motorcycle = new Motorbikes("Harley Davidson", "red", "sport", 2015, 12.000, "blue motion", "300 ps");
- console.log(motorcycle.ShowMessageagain());
- document.getElementById("demo").innerHTML = motorcycle.ShowMessageagain();
+ let motorcycle = new Motorbikes("Harley Davidson", "red", "sport", 2015, "https://cdn.pixabay.com/photo/2015/08/27/09/06/bike-909690_1280.jpg", 12.000, "blue motion", "300 ps");
+ console.log(motorcycle.ShowMessage());
+//  document.getElementById("demo").innerHTML = motorcycle.ShowMessage();
 
 class Trucks extends Vehicles {
     numberOfWheels: number;
     numberOfSeats: number;
     fuelType: "";
-    constructor(a, b, c, d, numberOfWheels, numberOfSeats, fuelType) {
-        super(a, b, c, d);
+    constructor(a, b, c, d, e, numberOfWheels, numberOfSeats, fuelType) {
+        super(a, b, c, d, e);
         this.numberOfWheels = numberOfWheels;
         this.numberOfSeats = numberOfSeats;
         this.fuelType = fuelType;
     }
-    ShowMessageNext() {
+    ShowMessage() {
         return `${super.ShowMessage()}
                 Number of wheels: ${this.numberOfWheels}
                 Number of seats: ${this.numberOfSeats}
@@ -83,9 +79,13 @@ class Trucks extends Vehicles {
     }
 }
 
-let truck = new Trucks("Mercedes", "black", "scania", 2004, 14, 2, "diesel");
-console.log(truck.ShowMessageNext());
-document.getElementById("demo").innerHTML = truck.ShowMessageNext();
+let truck = new Trucks("Mercedes", "black", "scania", 2004, "https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&h=650&w=940", 14, 2, "diesel");
+console.log(truck.ShowMessage());
+// document.getElementById("demo").innerHTML = truck.ShowMessage();
+
+for (let vali of array) {
+    document.getElementById("demo").innerHTML += vali.ShowMessage();
+}
 
 // for (let i = 0; i < carsJson.length; i++) {
 

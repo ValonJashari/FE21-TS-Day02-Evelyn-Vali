@@ -1,12 +1,3 @@
-/*Create an App that has to offer four different of types of vehicles and list the vehicle models based on the selected panel. Once the user clicks on some vehicle show its details and possibility to view the price
-
-Create a Parent Class called Vehicles
-Define properties and methods for the super Class
-Consider the inheritance concept
-Define 2 other Child classes and name them Motorbikes and Trucks
-Based on the personal vehicle performance model, kilometers left, number of seats, fuel type and year of production calculate the price once the user clicks on the button "show price" *use your dummy custom formula)
-
-*/
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -22,62 +13,70 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+/*Create an App that has to offer four different of types of vehicles and list the vehicle models based on the selected panel. Once the user clicks on some vehicle show its details and possibility to view the price
+
+Create a Parent Class called Vehicles
+Define properties and methods for the super Class
+Consider the inheritance concept
+Define 2 other Child classes and name them Motorbikes and Trucks
+Based on the personal vehicle performance model, kilometers left, number of seats, fuel type and year of production calculate the price once the user clicks on the button "show price" *use your dummy custom formula)
+
+*/
+var array = [];
 var Vehicles = /** @class */ (function () {
-    function Vehicles(a, b, c, d) {
+    function Vehicles(a, b, c, d, e) {
         this.brand = a;
         this.color = b;
         this.carType = c;
         this.productionYear = d;
-        // this.price = d;
-        // this.power = e;
-        // this.technology = f;
-        // model = "";
-        // fuel_type = "";
-        // registration_year = "";
+        this.img = e;
+        array.push(this);
+        console.table(array);
         console.log(this);
-        // <p>${this.price}</p>
-        // <p>${this.power}</p>
-        // <p>${this.technology}</p>
     }
     Vehicles.prototype.ShowMessage = function () {
-        return "                brand: " + this.brand + "\n                color: " + this.color + "\n                type: " + this.carType + "\n                production year: " + this.productionYear + "\n                ";
+        return "                brand: " + this.brand + "\n                color: " + this.color + "\n                type: " + this.carType + "\n                production year: " + this.productionYear + "\n                <img src=\"" + this.img + "\">\n                ";
     };
     return Vehicles;
 }());
 var Motorbikes = /** @class */ (function (_super) {
     __extends(Motorbikes, _super);
-    function Motorbikes(a, b, c, d, price, technology, power) {
-        var _this = _super.call(this, a, b, c, d) || this;
+    function Motorbikes(a, b, c, d, e, price, technology, power) {
+        var _this = _super.call(this, a, b, c, d, e) || this;
         _this.price = price;
         _this.technology = technology;
         _this.power = power;
         return _this;
     }
-    Motorbikes.prototype.ShowMessageagain = function () {
+    Motorbikes.prototype.ShowMessage = function () {
         return _super.prototype.ShowMessage.call(this) + "\n                 price: " + this.price + "\n                 technology: " + this.technology + "\n                 power: " + this.power + "\n                 ";
     };
     return Motorbikes;
 }(Vehicles));
-var motorcycle = new Motorbikes("Harley Davidson", "red", "sport", 2015, 12.000, "blue motion", "300 ps");
-console.log(motorcycle.ShowMessageagain());
-document.getElementById("demo").innerHTML = motorcycle.ShowMessageagain();
+var motorcycle = new Motorbikes("Harley Davidson", "red", "sport", 2015, "https://cdn.pixabay.com/photo/2015/08/27/09/06/bike-909690_1280.jpg", 12.000, "blue motion", "300 ps");
+console.log(motorcycle.ShowMessage());
+//  document.getElementById("demo").innerHTML = motorcycle.ShowMessage();
 var Trucks = /** @class */ (function (_super) {
     __extends(Trucks, _super);
-    function Trucks(a, b, c, d, numberOfWheels, numberOfSeats, fuelType) {
-        var _this = _super.call(this, a, b, c, d) || this;
+    function Trucks(a, b, c, d, e, numberOfWheels, numberOfSeats, fuelType) {
+        var _this = _super.call(this, a, b, c, d, e) || this;
         _this.numberOfWheels = numberOfWheels;
         _this.numberOfSeats = numberOfSeats;
         _this.fuelType = fuelType;
         return _this;
     }
-    Trucks.prototype.ShowMessageNext = function () {
+    Trucks.prototype.ShowMessage = function () {
         return _super.prototype.ShowMessage.call(this) + "\n                Number of wheels: " + this.numberOfWheels + "\n                Number of seats: " + this.numberOfSeats + "\n                Fuel type: " + this.fuelType + "\n                ";
     };
     return Trucks;
 }(Vehicles));
-var truck = new Trucks("Mercedes", "black", "scania", 2004, 14, 2, "diesel");
-console.log(truck.ShowMessageNext());
-document.getElementById("demo").innerHTML = truck.ShowMessageNext();
+var truck = new Trucks("Mercedes", "black", "scania", 2004, "https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&h=650&w=940", 14, 2, "diesel");
+console.log(truck.ShowMessage());
+// document.getElementById("demo").innerHTML = truck.ShowMessage();
+for (var _i = 0, array_1 = array; _i < array_1.length; _i++) {
+    var vali = array_1[_i];
+    document.getElementById("demo").innerHTML += vali.ShowMessage();
+}
 // for (let i = 0; i < carsJson.length; i++) {
 //     // create card-div
 //     var cardContainer = document.createElement("div");
