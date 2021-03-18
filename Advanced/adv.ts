@@ -9,28 +9,163 @@ Based on the personal vehicle performance model, kilometers left, number of seat
 */
 
 class Vehicles {
-    brand: "";
-    model:"";
+    brand:"";
     color:"";
-    preis:number;
-    fuel_type:"";
-    registration_year:number;
-    power:"";
-    technology:"";
+    carType:"";
+    productionYear:number;
 
-
-
-    constructor(parameters) {
+    constructor(a, b, c, d) {
+        this.brand = a;
+        this.color = b;
+        this.carType = c;
+        this.productionYear = d;
+        // this.price = d;
+        // this.power = e;
+        // this.technology = f;
+        // model = "";
+        // fuel_type = "";
+        // registration_year = "";
+        console.log(this);
         
+        // <p>${this.price}</p>
+        // <p>${this.power}</p>
+        // <p>${this.technology}</p>
+    }
+    ShowMessage() {
+        return `                brand: ${this.brand}
+                color: ${this.color}
+                type: ${this.carType}
+                production year: ${this.productionYear}
+                `
+    }
+    }
+
+ class Motorbikes extends Vehicles {
+     price: number;
+     technology: "";
+     power: "";
+
+     constructor(a, b, c, d, price, technology, power) {
+         super(a, b, c, d);
+         this.price = price;
+         this.technology = technology;
+         this.power = power;
+     }
+     ShowMessageagain() {
+         return `${super.ShowMessage()}
+                 price: ${this.price}
+                 technology: ${this.technology}
+                 power: ${this.power}
+                 `
+     }
+ }
+
+ let motorcycle = new Motorbikes("Harley Davidson", "red", "sport", 2015, 12.000, "blue motion", "300 ps");
+ console.log(motorcycle.ShowMessageagain());
+ document.getElementById("demo").innerHTML = motorcycle.ShowMessageagain();
+
+class Trucks extends Vehicles {
+    numberOfWheels: number;
+    numberOfSeats: number;
+    fuelType: "";
+    constructor(a, b, c, d, numberOfWheels, numberOfSeats, fuelType) {
+        super(a, b, c, d);
+        this.numberOfWheels = numberOfWheels;
+        this.numberOfSeats = numberOfSeats;
+        this.fuelType = fuelType;
+    }
+    ShowMessageNext() {
+        return `${super.ShowMessage()}
+                Number of wheels: ${this.numberOfWheels}
+                Number of seats: ${this.numberOfSeats}
+                Fuel type: ${this.fuelType}
+                `
     }
 }
 
+let truck = new Trucks("Mercedes", "black", "scania", 2004, 14, 2, "diesel");
+console.log(truck.ShowMessageNext());
+document.getElementById("demo").innerHTML = truck.ShowMessageNext();
+
+// for (let i = 0; i < carsJson.length; i++) {
+
+//     // create card-div
+//     var cardContainer = document.createElement("div");
+//     cardContainer.setAttribute("id", "cardContainer" + [i]);
+//     document.getElementById("container").appendChild(cardContainer);
+
+//     // create cardMini-div
+//     var cardMini = document.createElement("div");
+//     cardMini.setAttribute("id", "cardMini" + [i]);
+//     document.getElementById("cardContainer" + [i]).appendChild(cardMini);
+
+//     // create <img> Mini
+//     var imgMini = document.createElement("img");
+//     imgMini.setAttribute("src", carsJson[i].image);
+//     document.getElementById("cardMini" + [i]).appendChild(imgMini);
+
+//     // create <p> imgage text
+//     var imgMiniText = document.createElement("p");
+//     var imgMiniTextNode = document.createTextNode(carsJson[i].carBrand);
+//     imgMiniText.appendChild(imgMiniTextNode);
+//     document.getElementById("cardMini" + [i]).appendChild(imgMiniText);
 
 
+//     // create cardMaxi-div
+//     var cardMaxi = document.createElement("div");
+//     cardMaxi.setAttribute("id", "cardMaxi" + [i]);
+//     document.getElementById("cardContainer" + [i]).appendChild(cardMaxi);
 
+//     // create <img> Maxi
+//     var imgMaxi = document.createElement("img");
+//     imgMaxi.setAttribute("src", carsJson[i].image);
+//     document.getElementById("cardMaxi" + [i]).appendChild(imgMaxi);
 
+//      // create <div> text container
+//      var textContainer = document.createElement("p");
+//      textContainer.setAttribute("id", "textContainer" + [i]);
+//      document.getElementById("cardMaxi" + [i]).appendChild(textContainer);
 
+//     // create <p> title text
+//     var imgMaxiText = document.createElement("p");
+//     var imgMaxiTextNode = document.createTextNode(carsJson[i].carBrand);
+//     imgMaxiText.appendChild(imgMaxiTextNode);
+//     document.getElementById("textContainer" + [i]).appendChild(imgMaxiText);
 
+//     // create <p> detail text
+//     var imgMaxiDetailText = document.createElement("p");
+//     var imgMaxiDetailTextNode = document.createTextNode("Production Year: " + carsJson[i].productionYear);
+//     imgMaxiDetailText.appendChild(imgMaxiDetailTextNode);
+//     document.getElementById("textContainer" + [i]).appendChild(imgMaxiDetailText);
+
+//     // create <p> price text
+//     var imgMaxiPrice = document.createElement("p");
+//     var imgMaxiPriceNode = document.createTextNode("$" + carsJson[i].price);
+//     imgMaxiPrice.appendChild(imgMaxiPriceNode);
+//     document.getElementById("textContainer" + [i]).appendChild(imgMaxiPrice);
+
+// }
+
+// let cardMinis = document.querySelectorAll("[id*=cardMini]");
+// let cardMaxis = document.querySelectorAll("[id*=cardMaxi]");
+// let cardContainers = document.querySelectorAll("[id*=cardContainer]");
+
+// // console.log(cardMinis);
+
+// for (let i = 0; i < cardMinis.length; i++){
+//     cardMinis[i].addEventListener("click", function(){
+//         cardMaxis[i].style.display = "flex";
+//         cardContainers[i].setAttribute("style", "width: 100%;");
+//         cardMinis[i].style.display = "none";
+//     });
+
+//     cardMaxis[i].addEventListener("click", function(){
+//         cardMinis[i].style.display = "block";
+//         cardContainers[i].setAttribute("style", "width: auto;");
+//         cardMaxis[i].style.display = "none";
+
+//     });
+// }
 
 
 
@@ -52,7 +187,7 @@ var array: Array<{fName: string, lName: string, img: string, showMessage: Functi
      }
 
      showMessage(){
-         return `   <p>${this.fName}</p>
+         return `   <$>${this.fName}</$>
                     <p>${this.lName}</p>
                     <img src="${this.img}">`
      }
